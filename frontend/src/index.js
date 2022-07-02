@@ -1,15 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { Provider } from 'react-redux'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import store from './store'
+import App from './app'
+import './index.css'
+
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <>
-    <header>
-      <h1>This is my To do APP </h1>
-      <p>Develop release 1.0.0</p>
-      <div class="spiner"></div>
-    </header>
-  </>
+  <Provider store={store}>
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  </Provider>
 )
