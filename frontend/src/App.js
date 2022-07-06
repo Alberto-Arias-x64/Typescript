@@ -8,7 +8,7 @@ import Pomodoro from './apps/Pomodoro'
 import Alarms from './apps/Alarms'
 import Reminder from './apps/Reminder'
 
-import Side_panel from './components/Side_panel'
+import Side_Panel from './components/Side_Panel'
 
 const App = () => {
     const [side_show, set_side] = useState(false)
@@ -18,7 +18,7 @@ const App = () => {
             <header>
                 <div className="icon" onClick={() => set_side(!side_show)}><ion-icon name="apps-outline"></ion-icon></div>
                 <h1>Time Manager</h1>
-                <Side_panel show={side_show} update_state={set_side}/>
+                <Side_Panel show={side_show} update_state={set_side}/>
             </header>
             <main>
                 {app === 'Daily' && <Daily/>}

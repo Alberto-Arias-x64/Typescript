@@ -51,20 +51,17 @@ const Tasks = sequelize.define('Task', {
 })
 const Rules = sequelize.define('Rules', {
     id: {
-        type: DataTypes.UUIDV4,
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull:false,
         primaryKey: true
     },
     name: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    status: {
-        type: DataTypes.STRING,
-        allowNull: false
     }
 }, {
-    timestamps: true,
-    createdAt: true
+    timestamps: false,
+    createdAt: false
 })
 export { Daily_Routine, Tasks, Rules }
