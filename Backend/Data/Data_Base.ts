@@ -15,8 +15,9 @@ const sequelize = new Sequelize({
 
 const Daily_Routine = sequelize.define('Daily_Routine', { //Ready
     id: {
-        type: DataTypes.UUIDV4,
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull:false,
         primaryKey: true
     },
     name: {
@@ -37,8 +38,9 @@ const Daily_Routine = sequelize.define('Daily_Routine', { //Ready
 })
 const Tasks = sequelize.define('Task', { //Ready
     id: {
-        type: DataTypes.UUIDV4,
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull:false,
         primaryKey: true
     },
     name: {
@@ -55,8 +57,9 @@ const Tasks = sequelize.define('Task', { //Ready
 })
 const Reminder = sequelize.define('Reminder', { //Ready
     id: {
-        type: DataTypes.UUIDV4,
-        allowNull: false,
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull:false,
         primaryKey: true
     },
     name: {

@@ -35,13 +35,18 @@ input{
   border: none;
   outline: none;
 }
+input[type="time"]{
+  padding: .1rem .5rem;
+  background-color: var(--principal_color);
+  border-radius: 1ch;
+}
 button{
   height: 4ch;
   padding: 0 .8rem;
   background-color: var(--secondary_color);
   border: none;
 }
-
+/* Scroll */
 body::-webkit-scrollbar {
   width: 12px;               /* width of the entire scrollbar */
 }
@@ -59,7 +64,6 @@ body::-webkit-scrollbar-thumb {
 .f_row{
   display: flex;
   flex-direction: row;
-  margin: .5rem 0;
   align-items: center;
 }
 .icon{
@@ -95,7 +99,8 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 .card_gray{
-  width: 350px;
+  width: 400px;
+  margin: .5rem 0;
   padding: .2rem;
   padding-left: .8rem;
 
@@ -122,6 +127,11 @@ body::-webkit-scrollbar-thumb {
   justify-content: end;
   font-size: .8rem !important;
 }
+.standard_gap > *{
+  margin: .08rem;
+}
+
+/* Decorators*/
 .underline_decorator{
   border-bottom: 1px solid rgba(255, 204, 0, 0.5);
   gap: 1rem;
@@ -136,7 +146,7 @@ body::-webkit-scrollbar-thumb {
 
 /* inputs*/
 .simple_input{
-  width: 350px;
+  width: 400px;
   padding: .2rem;
   padding-left: .8rem;
 
@@ -150,6 +160,24 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 .simple_input > button{
+  border-radius: 0 2ch 2ch 0;
+}
+.extended_input{
+  width: 400px;
+  padding: .2rem;
+  padding-left: .8rem;
+
+  display: grid;
+  grid-template-columns: max-content auto min-content auto;
+  gap: .4rem;
+  align-items: center;
+
+  background-color: var(--side_bar  );
+  color: aliceblue;
+  border-radius: 20px;
+}
+.extended_input  > button{
+  height: 8ch;
   border-radius: 0 2ch 2ch 0;
 }
 
@@ -200,14 +228,4 @@ body::-webkit-scrollbar-thumb {
 }
 .context_show{
   display: block;
-}
-
-/*daily*/
-.daily{
-  width: 350px;
-  margin: .2rem;
-  padding-left: .8rem;
-  display: grid;
-  grid-template-columns: auto max-content;
-  align-items: center;
 }

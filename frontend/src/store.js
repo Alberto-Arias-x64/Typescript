@@ -37,10 +37,23 @@ const Alarms = createSlice({
     }
 })
 
+const Daily = createSlice({
+    name: 'Daily',
+    initialState: {
+        value: []
+    },
+    reducers: {
+        Daily_Update: (state, action) => {
+            state.value = action.payload
+        },
+    }
+})
+
 const store = configureStore({
     reducer: {
         Active_app: Active_app.reducer,
         Alarms: Alarms.reducer,
+        Daily: Daily.reducer,
         Rules: Rules.reducer
     }
 })
@@ -48,4 +61,5 @@ const store = configureStore({
 export const { App_Update } = Active_app.actions
 export const { Rules_Update } = Rules.actions
 export const { Alarms_Update } = Alarms.actions
+export const { Daily_Update } = Daily.actions
 export default store
