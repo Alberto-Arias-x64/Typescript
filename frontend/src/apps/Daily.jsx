@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { Daily_Update } from '../store'
+import { Base_Dir } from '../app'
 
 const Daily = () => {
     const Daily_Data = useSelector((state) => state.Daily.value)
@@ -17,14 +18,14 @@ const Daily = () => {
             start: New_Start,
             end: New_End
         }
-        const { data } = await axios.post('http://127.0.0.1:3001/api/daily', New_Data_Daily)
+        const { data } = await axios.post(Base_Dir+'api/daily', New_Data_Daily)
         dispatch(Daily_Update(data))
         Set_New_Name('')
         Set_New_Start('')
         Set_New_End('')
     }
     const Handle_Delete = async ({ target }) => {
-        const { data } = await axios.delete('http://127.0.0.1:3001/api/daily', { data: { id: target.dataset.id } })
+        const { data } = await axios.delete(Base_Dir+'api/daily', { data: { id: target.dataset.id } })
         dispatch(Daily_Update(data))
     }
     const Handle_Input_Name = (({ target }) => {
@@ -57,9 +58,9 @@ const Daily = () => {
                     <div className='dot_decorator'></div>
                     <p className=''>{Day.name}</p>
                     <div className='f_row'>
-                        <div className='badge f_row'>
+                        <div className='badge g_row'>
                             <p>{Day.time_init}</p>
-                            <p> - </p>
+                            <p> | </p>
                             <p>{Day.time_end}</p>
                         </div>
                         <div className='context_menu' onClick={Handle_Hide}>
@@ -76,7 +77,7 @@ const Daily = () => {
     }
     useEffect(() => {
         const update = async () => {
-            const { data } = await axios.get('http://127.0.0.1:3001/api/daily')
+            const { data } = await axios.get(Base_Dir+'api/daily')
             dispatch(Daily_Update(data))
         }
         update()

@@ -109,4 +109,5 @@ const Rules = sequelize.define('Rules', { //Ready
     timestamps: false,
     createdAt: true,
 })
+
 export { Daily_Routine, Tasks, Rules , Reminder , Alarms , sequelize}

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { Rules_Update } from "../store"
+import { Base_Dir } from '../app'
 
 const Rules = () => {
     const Rules_Data = useSelector((state) => state.Rules.value)
@@ -10,12 +11,12 @@ const Rules = () => {
     const [New_Rule, Set_New_Rule] = useState('')
 
     const Handle_Button = async () => {
-        const { data } = await axios.post('http://127.0.0.1:3001/api/rules', { name: New_Rule })
+        const { data } = await axios.post(Base_Dir+'api/rules', { name: New_Rule })
         dispatch(Rules_Update(data))
         Set_New_Rule('')
     }
     const Handle_Delete = async ({ target }) => {
-        const { data } = await axios.delete('http://127.0.0.1:3001/api/rules', { data: { id: target.dataset.id } })
+        const { data } = await axios.delete(Base_Dir+'api/rules', { data: { id: target.dataset.id } })
         dispatch(Rules_Update(data))
     }
     const Handle_Input = (({ target }) => {
@@ -54,7 +55,7 @@ const Rules = () => {
     }
     useEffect(() => {
         const update = async () => {
-            const { data } = await axios.get('http://127.0.0.1:3001/api/rules')
+            const { data } = await axios.get(Base_Dir+'api/rules')
             dispatch(Rules_Update(data))
         }
         update()

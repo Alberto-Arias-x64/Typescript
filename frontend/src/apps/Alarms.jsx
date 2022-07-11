@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import { Alarms_Update } from "../store"
+import { Base_Dir } from '../app'
 
 const Alarms = () => {
     const Alarms_Data = useSelector((state) => state.Alarms.value)
@@ -10,12 +11,12 @@ const Alarms = () => {
     const [New_Alarm, Set_New_Alarm] = useState('')
 
     const Handle_Button = async () => {
-        const { data } = await axios.post('http://127.0.0.1:3001/api/Alarms', { time: New_Alarm })
+        const { data } = await axios.post(Base_Dir+'api/Alarms', { time: New_Alarm })
         dispatch(Alarms_Update(data))
         Set_New_Alarm('')
     }
     const Handle_Delete = async ({ target }) => {
-        const { data } = await axios.delete('http://127.0.0.1:3001/api/Alarms', { data: { id: target.dataset.id } })
+        const { data } = await axios.delete(Base_Dir+'api/Alarms', { data: { id: target.dataset.id } })
         dispatch(Alarms_Update(data))
     }
     const Handle_Input = (({ target }) => {
@@ -54,7 +55,7 @@ const Alarms = () => {
     }
     useEffect(() => {
         const update = async () => {
-            const { data } = await axios.get('http://127.0.0.1:3001/api/Alarms')
+            const { data } = await axios.get(Base_Dir+'api/Alarms')
             dispatch(Alarms_Update(data))
         }
         update()

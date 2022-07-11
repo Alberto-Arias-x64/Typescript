@@ -37,6 +37,18 @@ const Alarms = createSlice({
     }
 })
 
+const Reminder = createSlice({
+    name: 'Reminder',
+    initialState: {
+        value: []
+    },
+    reducers: {
+        Reminder_Update: (state, action) => {
+            state.value = action.payload
+        },
+    }
+})
+
 const Daily = createSlice({
     name: 'Daily',
     initialState: {
@@ -54,7 +66,8 @@ const store = configureStore({
         Active_app: Active_app.reducer,
         Alarms: Alarms.reducer,
         Daily: Daily.reducer,
-        Rules: Rules.reducer
+        Rules: Rules.reducer,
+        Reminder: Reminder.reducer
     }
 })
 
@@ -62,4 +75,5 @@ export const { App_Update } = Active_app.actions
 export const { Rules_Update } = Rules.actions
 export const { Alarms_Update } = Alarms.actions
 export const { Daily_Update } = Daily.actions
+export const { Reminder_Update } = Reminder.actions
 export default store

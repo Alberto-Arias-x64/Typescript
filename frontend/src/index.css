@@ -40,6 +40,11 @@ input[type="time"]{
   background-color: var(--principal_color);
   border-radius: 1ch;
 }
+input[type="date"]{
+  padding: .1rem .5rem;
+  background-color: var(--principal_color);
+  border-radius: 1ch;
+}
 button{
   height: 4ch;
   padding: 0 .8rem;
@@ -60,6 +65,12 @@ body::-webkit-scrollbar-thumb {
 
 .bold{
   font-weight: 600;
+}
+.g_row{
+  display: grid;
+  grid-template-columns: max-content auto max-content;
+  align-items: center;
+  gap: .5rem;
 }
 .f_row{
   display: flex;
@@ -128,6 +139,7 @@ body::-webkit-scrollbar-thumb {
   font-size: .8rem !important;
 }
 .standard_gap > *{
+  width: 100%;
   margin: .08rem;
 }
 
@@ -177,18 +189,19 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 .extended_input  > button{
-  height: 8ch;
+  height: 7ch;
   border-radius: 0 2ch 2ch 0;
 }
 
 /*Side Panel*/
 #side_panel{
-  width: 300px;
+  width: 200px;
   height: 100vh;
   padding: .4rem;
 
   top: 0;
   position: absolute;
+  z-index: 2;
 
   display: grid;
   grid-template-rows: repeat(6, max-content) auto;

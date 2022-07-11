@@ -10,6 +10,7 @@ import Reminder from './apps/Reminder'
 
 import Side_Panel from './components/Side_Panel'
 
+const Base_Dir = 'http://192.168.31.236:3001/'
 const App = () => {
     const [side_show, set_side] = useState(false)
     const app = useSelector((state) => state.Active_app.value)
@@ -33,3 +34,4 @@ const App = () => {
 }
 
 export default App
+export {Base_Dir}
