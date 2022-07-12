@@ -61,13 +61,45 @@ const Daily = createSlice({
     }
 })
 
+const Pomodoro = createSlice({
+    name: 'Pomodoro',
+    initialState: {
+        minutes: 30,
+        seconds: 0,
+        clock_state: false
+    },
+    reducers: {
+        Pomodoro_Add: (state) => {
+            state.minutes += 1
+        },
+        Pomodoro_Subtract: (state) => {
+            if(state.seconds === 0){
+                state.minutes -=1
+                state.seconds = 59
+            }
+            else{
+                state.seconds -= 1
+            }
+        },
+        Pomodoro_Reset: (state) => {
+            state.minutes = 30
+            state.seconds = 0
+            state.clock_state = false
+        },
+        Pomodoro_State: (state) => {
+            state.clock_state = !state.clock_state
+        },
+    }
+})
+
 const store = configureStore({
     reducer: {
         Active_app: Active_app.reducer,
         Alarms: Alarms.reducer,
         Daily: Daily.reducer,
         Rules: Rules.reducer,
-        Reminder: Reminder.reducer
+        Reminder: Reminder.reducer,
+        Pomodoro: Pomodoro.reducer
     }
 })
 
@@ -76,4 +108,5 @@ export const { Rules_Update } = Rules.actions
 export const { Alarms_Update } = Alarms.actions
 export const { Daily_Update } = Daily.actions
 export const { Reminder_Update } = Reminder.actions
+export const { Pomodoro_Add, Pomodoro_Reset, Pomodoro_State, Pomodoro_Subtract } = Pomodoro.actions
 export default store

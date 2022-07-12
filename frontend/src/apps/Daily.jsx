@@ -18,14 +18,14 @@ const Daily = () => {
             start: New_Start,
             end: New_End
         }
-        const { data } = await axios.post(Base_Dir+'api/daily', New_Data_Daily)
+        const { data } = await axios.post(Base_Dir + 'api/daily', New_Data_Daily)
         dispatch(Daily_Update(data))
         Set_New_Name('')
         Set_New_Start('')
         Set_New_End('')
     }
     const Handle_Delete = async ({ target }) => {
-        const { data } = await axios.delete(Base_Dir+'api/daily', { data: { id: target.dataset.id } })
+        const { data } = await axios.delete(Base_Dir + 'api/daily', { data: { id: target.dataset.id } })
         dispatch(Daily_Update(data))
     }
     const Handle_Input_Name = (({ target }) => {
@@ -52,16 +52,33 @@ const Daily = () => {
     })
 
     const Print_Daily = () => {
+        const Current_Time = new Date()
+        const Current_Hour = Current_Time.getHours()
+        const Current_Minutes = Current_Time.getMinutes()
+        const Current_Time_Normalized = (Current_Hour * 60) + Current_Minutes
         return Daily_Data.map(Day => {
+            const { time_init, time_end } = Day
+
+            const Init_Hour = parseInt(`${time_init[0]}${time_init[1]}`)
+            const Init_Minutes = parseInt(`${time_init[3]}${time_init[4]}`)
+            const Init_Time_Normalized = (Init_Hour * 60) + Init_Minutes
+
+            const End_Hour = parseInt(`${time_end[0]}${time_end[1]}`)
+            const End_Minutes = parseInt(`${time_end[3]}${time_end[4]}`)
+            const End_Time_Normalized = (End_Hour * 60) + End_Minutes
+
+            let Active_Time = false
+            if (Init_Time_Normalized <= Current_Time_Normalized && End_Time_Normalized >= Current_Time_Normalized) Active_Time = true
+
             return (
                 <div className='card_gray f_row' key={Day.id}>
-                    <div className='dot_decorator'></div>
+                    <div className={Active_Time ? 'dot_decorator' : 'dot_decorator_deactivated'}></div>
                     <p className=''>{Day.name}</p>
                     <div className='f_row'>
                         <div className='badge g_row'>
-                            <p>{Day.time_init}</p>
+                            <p>{time_init}</p>
                             <p> | </p>
-                            <p>{Day.time_end}</p>
+                            <p>{time_end}</p>
                         </div>
                         <div className='context_menu' onClick={Handle_Hide}>
                             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
@@ -77,7 +94,7 @@ const Daily = () => {
     }
     useEffect(() => {
         const update = async () => {
-            const { data } = await axios.get(Base_Dir+'api/daily')
+            const { data } = await axios.get(Base_Dir + 'api/daily')
             dispatch(Daily_Update(data))
         }
         update()

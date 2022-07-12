@@ -142,11 +142,32 @@ body::-webkit-scrollbar-thumb {
   width: 100%;
   margin: .08rem;
 }
+.rounded{
+  width:3rem;
+  height: 3rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+
+  font-size: 2rem;
+  border-radius: 50%;
+}
 
 /* Decorators*/
 .underline_decorator{
   border-bottom: 1px solid rgba(255, 204, 0, 0.5);
   gap: 1rem;
+}
+.dot_decorator_deactivated{
+  width: 1ch;
+  height: 1ch;
+  
+  background-color: var(--secondary_color);
+  border-radius: 50%;
+  opacity: .1;
 }
 .dot_decorator{
   width: 1ch;
@@ -222,9 +243,11 @@ body::-webkit-scrollbar-thumb {
 }
 .panel_show{
   right: 0;
+  display: block !important;
 }
 .panel_hide{
   right: -300px;
+  display: none !important;
 }
 
 /*Context menu*/
@@ -241,4 +264,42 @@ body::-webkit-scrollbar-thumb {
 }
 .context_show{
   display: block;
+}
+
+/* Clock*/
+
+.clock{
+  width: 145px;
+  height: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+}
+.clock_decorator{
+  position: absolute;
+  left: 2px;
+  top: 2px;
+
+  fill: transparent;
+  stroke: var(--side_bar);
+  stroke-width: .2rem;
+  z-index: -1;
+}
+.clock_decorator:nth-child(2){
+  position: absolute;
+  left: 2px;
+  top: 2px;
+
+  fill: transparent;
+  stroke: var(--secondary_color);
+  stroke-width: .2rem;
+  stroke-dasharray: 440;
+  z-index: -1;
+}
+.clock_data{
+  font-size: 2rem;
+  font-weight: 100;
 }
