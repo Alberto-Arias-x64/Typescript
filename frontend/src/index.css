@@ -271,33 +271,35 @@ body::-webkit-scrollbar-thumb {
 .clock{
   width: 145px;
   height: 145px;
+  margin: 60px auto;
+  padding: 40px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   position: relative;
+  transform: scale(1.8) ;
 }
 .clock_decorator{
+  width: 145px;
+  height: 145px;
+
   position: absolute;
-  left: 2px;
-  top: 2px;
 
   fill: transparent;
   stroke: var(--side_bar);
   stroke-width: .2rem;
+
   z-index: -1;
+  overflow: visible;
 }
 .clock_decorator:nth-child(2){
-  position: absolute;
-  left: 2px;
-  top: 2px;
-
-  fill: transparent;
   stroke: var(--secondary_color);
   stroke-width: .2rem;
   stroke-dasharray: 440;
-  z-index: -1;
+
+  transform: rotate(-90deg) translate(5px, -5px) scale(1,-1);
 }
 .clock_data{
   font-size: 2rem;

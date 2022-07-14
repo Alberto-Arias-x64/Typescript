@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 
 import { Pomodoro_Subtract, Pomodoro_Reset, Pomodoro_State } from '../store'
 
@@ -11,13 +11,19 @@ const Pomodoro = () => {
     const Play = () => {
         dispatch(Pomodoro_State())
         if (clock_state !== true) {
-            Set_Interval(setInterval(() => dispatch(Pomodoro_Subtract()), 1000))
+            Set_Interval(setInterval(() => {
+                dispatch(Pomodoro_Subtract())
+            }, 1000))
         }
         else {
             clearInterval(Interval)
             Set_Interval(null)
         }
     }
+    useEffect(() => {
+        const Clock = document.querySelector('#clock_data_decorator')
+        Clock.style.strokeDashoffset = 440 - (440 * minutes) / 30
+    }, [minutes]);
     return (
         < section >
             <h2>Pomodoro</h2>
@@ -27,7 +33,7 @@ const Pomodoro = () => {
                     <circle cx={70} cy={70} r={70}>
                     </circle>
                 </svg>
-                <svg className='clock_decorator' id=''>
+                <svg className='clock_decorator' id='clock_data_decorator'>
                     <circle cx={70} cy={70} r={70}>
                     </circle>
                 </svg>
