@@ -13,7 +13,7 @@ const Pomodoro = () => {
         if (clock_state !== true) {
             Set_Interval(setInterval(() => {
                 dispatch(Pomodoro_Subtract())
-            }, 1000))
+            }, 1000)) 
         }
         else {
             clearInterval(Interval)
