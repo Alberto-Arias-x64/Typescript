@@ -27,7 +27,7 @@ const Pomodoro = () => {
     return (
         < section >
             <h2>Pomodoro</h2>
-            <div className="spinner"></div>
+            {/* <div className="spinner"></div> */}
             <div className='clock'>
                 <svg className='clock_decorator'>
                     <circle cx={70} cy={70} r={70}>

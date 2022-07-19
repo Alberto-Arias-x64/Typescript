@@ -45,6 +45,19 @@ input[type="date"]{
   background-color: var(--principal_color);
   border-radius: 1ch;
 }
+select{
+  font-family: 'Montserrat', sans-serif;
+  background-color: transparent;
+  color: aliceblue;
+  border: none;
+  outline: none;
+  padding: .1rem .5rem;
+  background-color: var(--principal_color);
+  border-radius: 1ch;
+}
+option{
+  background-color: var(--principal_color);
+}
 button{
   height: 4ch;
   padding: 0 .8rem;
@@ -130,6 +143,15 @@ body::-webkit-scrollbar-thumb {
   padding: .2rem 1rem;
 
   border-radius: 5rem;
+  background-color: var(--principal_color);
+  border: var(--secondary_color) 1px solid;
+  color: var(--secondary_color);
+}
+.badge_context{
+  width: fit-content;  
+  padding: .2rem 1rem;
+
+  border-radius: 5rem;
   background-color: var(--secondary_color);
   color: black;
 }
@@ -154,6 +176,10 @@ body::-webkit-scrollbar-thumb {
 
   font-size: 2rem;
   border-radius: 50%;
+}
+.card_grid{
+  display: grid;
+  grid-template-columns: auto min-content;
 }
 
 /* Decorators*/
@@ -193,6 +219,7 @@ body::-webkit-scrollbar-thumb {
   border-radius: 20px;
 }
 .simple_input > button{
+  width: 5rem;
   border-radius: 0 2ch 2ch 0;
 }
 .extended_input{
@@ -201,7 +228,7 @@ body::-webkit-scrollbar-thumb {
   padding-left: .8rem;
 
   display: grid;
-  grid-template-columns: max-content auto min-content auto;
+  grid-template-columns: max-content auto min-content min-content;
   gap: .4rem;
   align-items: center;
 
@@ -211,6 +238,25 @@ body::-webkit-scrollbar-thumb {
 }
 .extended_input  > button{
   height: 7ch;
+  width: 5rem;
+  border-radius: 0 2ch 2ch 0;
+}
+.double_input{
+  width: 400px;
+  padding: .2rem;
+  padding-left: .8rem;
+
+  display: grid;
+  grid-template-columns: max-content auto min-content min-content;
+  gap: .4rem;
+  align-items: center;
+
+  background-color: var(--side_bar  );
+  color: aliceblue;
+  border-radius: 20px;
+}
+.double_input  > button{
+  width: 5rem;
   border-radius: 0 2ch 2ch 0;
 }
 
@@ -271,7 +317,7 @@ body::-webkit-scrollbar-thumb {
 .clock{
   width: 145px;
   height: 145px;
-  margin: 60px auto;
+  margin: 100px;
   padding: 40px;
 
   display: flex;
@@ -304,4 +350,15 @@ body::-webkit-scrollbar-thumb {
 .clock_data{
   font-size: 2rem;
   font-weight: 100;
+}
+
+/* To Do */
+
+#todo{
+  width: 400px;
+  gap: .2rem;
+  margin-bottom: .5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: auto;
 }

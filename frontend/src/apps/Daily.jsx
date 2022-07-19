@@ -75,7 +75,7 @@ const Daily = () => {
                     <div className={Active_Time ? 'dot_decorator' : 'dot_decorator_deactivated'}></div>
                     <p className=''>{Day.name}</p>
                     <div className='f_row'>
-                        <div className='badge g_row'>
+                        <div className='badge_context g_row'>
                             <p>{time_init}</p>
                             <p> | </p>
                             <p>{time_end}</p>

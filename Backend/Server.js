@@ -1,0 +1,24 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const morgan_1 = __importDefault(require("morgan"));
+const path_1 = __importDefault(require("path"));
+const cors_1 = __importDefault(require("cors"));
+require("dotenv/config");
+require("colors");
+const Router_1 = __importDefault(require("./Routes/Router"));
+const Api_Router_1 = __importDefault(require("./Routes/Api_Router"));
+const Data_Base_1 = require("./Data/Data_Base");
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use(express_1.default.static(path_1.default.join(__dirname, 'Public')));
+app.use((0, morgan_1.default)('dev'));
+app.use((0, cors_1.default)());
+app.use('/', Router_1.default);
+app.use('/api', Api_Router_1.default);
+const PORT = process.env.PORT || 3001;
+Data_Base_1.sequelize.sync({ alter: true });
+app.listen(PORT, () => console.log(`Listen on port: ` + `${PORT}`.blue));

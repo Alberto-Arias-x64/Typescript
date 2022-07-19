@@ -61,6 +61,18 @@ const Daily = createSlice({
     }
 })
 
+const Todo = createSlice({
+    name: 'Todo',
+    initialState: {
+        value: []
+    },
+    reducers: {
+        Todo_Update: (state, action) => {
+            state.value = action.payload
+        },
+    }
+})
+
 const Pomodoro = createSlice({
     name: 'Pomodoro',
     initialState: {
@@ -99,7 +111,8 @@ const store = configureStore({
         Daily: Daily.reducer,
         Rules: Rules.reducer,
         Reminder: Reminder.reducer,
-        Pomodoro: Pomodoro.reducer
+        Pomodoro: Pomodoro.reducer,
+        Todo: Todo.reducer
     }
 })
 
@@ -108,5 +121,6 @@ export const { Rules_Update } = Rules.actions
 export const { Alarms_Update } = Alarms.actions
 export const { Daily_Update } = Daily.actions
 export const { Reminder_Update } = Reminder.actions
+export const { Todo_Update } = Todo.actions
 export const { Pomodoro_Add, Pomodoro_Reset, Pomodoro_State, Pomodoro_Subtract } = Pomodoro.actions
 export default store

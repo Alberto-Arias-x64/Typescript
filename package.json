@@ -2,10 +2,11 @@
   "name": "typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/Server.js",
+  "main": "./Backend/Server.js",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev ./Backend/Server.ts"
+    "dev": "ts-node-dev ./Backend/Server.ts",
+    "start": "npx ./Backend/Server.js"
   },
   "keywords": [],
   "author": "",
