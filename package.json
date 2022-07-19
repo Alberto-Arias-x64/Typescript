@@ -4,9 +4,8 @@
   "description": "",
   "main": "./Backend/Server.js",
   "scripts": {
-    "build": "",
     "dev": "ts-node-dev ./Backend/Server.ts",
-    "start": "npx ./Backend/Server.js"
+    "start": "node ./Backend/Server.js"
   },
   "keywords": [],
   "author": "",
