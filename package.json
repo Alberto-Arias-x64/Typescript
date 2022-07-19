@@ -4,7 +4,6 @@
   "description": "",
   "main": "./Backend/Server.js",
   "scripts": {
-    "build": "tsc",
     "dev": "ts-node-dev ./Backend/Server.ts",
     "start": "npx ./Backend/Server.js"
   },
